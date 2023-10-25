@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Love Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            background-image: url('heart.jpg');
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        
+        #outer-container {
+            width: 40%;
+            height: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Center-align content vertically */
+        }
+        
+        #container {
+            width: 80%;
+            padding: 20px;
+            background-color: #ffcccb; /* Baby pink background color */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-family: "Monotype Corsiva", cursive;
+            text-align: center; /* Center-align the title */
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #love-meter-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #love-meter {
+            width: 100%;
+            background-color: #ccc; /* Gray background for meter */
+            height: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        #love-fill {
+            background-color: red; /* Red fill color */
+            height: 100%;
+            border-radius: 10px;
+            position: absolute;
+        }
+
+        #names-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        #heart {
+            font-size: 20px;
+            color: red;
+        }
+
+        #name1, #name2 {
+            width: 48%;
+        }
+
+        #calculate-button {
+            display: block;
+            margin: 0 auto; /* Center-align the button */
+            background-color: red; /* Red button color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer-container">
+        <div id="container">
+            <h1>Love Calculator</h1>
+            <div id="names-container">
+                <input type="text" id="name1" placeholder="Name 1">
+                <div id="heart">❤️</div>
+                <input type="text" id="name2" placeholder="Name 2">
+            </div>
+            <button id="calculate-button">Calculate Percentage</button>
+            <div id="result"></div>
+            <div id="love-meter-container">
+                <div id="love-meter">
+                    <div id="love-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to calculate love percentage
+        function calculateLove() {
+            const name1 = document.getElementById('name1').value;
+            const name2 = document.getElementById('name2').value;
+            const loveMeter = document.getElementById('love-meter');
+
+            if (name1 && name2) {
+                const lovePercentage = Math.floor(Math.random() * 100) + 1;
+                document.getElementById('result').textContent = `Love between ${name1} and ${name2}: ${lovePercentage}%`;
+                
+                // Update the love meter
+                const loveFill = document.getElementById('love-fill');
+                loveFill.style width = lovePercentage + '%';
+            } else {
+                alert('Please enter both names.');
+            }
+        }
+
+        // Add a click event listener to the Calculate button
+        document.getElementById('calculate-button').addEventListener('click', calculateLove);
+    </script>
+</body>
+</html>
